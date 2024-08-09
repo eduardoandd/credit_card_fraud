@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from yellowbrick.classifier import ConfusionMatrix
+import pickle
 
 # ========== PRÉ PROCESSAMENTO ==========
 df=pd.read_csv('fraud_data.csv')
@@ -62,3 +63,8 @@ accuracy_score(y_teste,previsao) #98%
 cm=ConfusionMatrix(nave_credit)
 cm.fit(X_treinamento,y_treinamento)
 cm.score(X_teste,y_teste)
+
+# ============= SALVANDO VARIÁVREIS EM DISCO =============
+# with open('credit_card_fraud.pkl', mode='wb') as f:
+#     pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
+
