@@ -5,9 +5,6 @@ import seaborn as sns
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder,StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
-from yellowbrick.classifier import ConfusionMatrix
 import pickle
 
 # ========== PRÉ PROCESSAMENTO ==========
@@ -30,9 +27,7 @@ sns.countplot(x=df['merchant'].duplicated(),palette='dark')
 X=df.iloc[:,0:-1].values
 y=df.iloc[:,-1].values
 
-
 # ============= TRATAMENTO DE ATRIBUTOS CATEGORICOS =============
-
 #LabelEnconder
 label_encoder = LabelEncoder()
 indices=[]
@@ -54,17 +49,6 @@ X=scaler.fit_transform(X)
 # ============= ESCALONAMENTO DE VALORES =============
 X_treinamento,X_teste,y_treinamento,y_teste=train_test_split(X,y,test_size=0.3,random_state=0)
 
-# ============= APLICAÇÃO DO ALGORITMO =============
-nave_credit=GaussianNB()
-nave_credit.fit(X_treinamento,y_treinamento)
-previsao=nave_credit.predict(X_teste)
-
-accuracy_score(y_teste,previsao) #98%
-cm=ConfusionMatrix(nave_credit)
-cm.fit(X_treinamento,y_treinamento)
-cm.score(X_teste,y_teste)
-
 # ============= SALVANDO VARIÁVREIS EM DISCO =============
 # with open('credit_card_fraud.pkl', mode='wb') as f:
 #     pickle.dump([X_treinamento,y_treinamento,X_teste,y_teste,df],f)
-

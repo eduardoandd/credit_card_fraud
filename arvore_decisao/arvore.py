@@ -6,7 +6,7 @@ from yellowbrick.classifier import ConfusionMatrix
 import pandas as pd
 import matplotlib.pyplot as plt
 
-with open('../naive_bayes/credit_card_fraud.pkl','rb') as f:
+with open('../credit_card_fraud.pkl','rb') as f:
     X_treinamento,y_treinamento,X_teste,y_teste,df=pickle.load(f)
 
 arvore= DecisionTreeClassifier(criterion='entropy')
