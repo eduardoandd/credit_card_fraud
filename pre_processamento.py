@@ -46,7 +46,7 @@ X=one_hot_encoder.fit_transform(X).toarray()
 scaler=StandardScaler()
 X=scaler.fit_transform(X)
 
-# ============= ESCALONAMENTO DE VALORES =============
+# ============= TREINAMENTO =============
 X_treinamento,X_teste,y_treinamento,y_teste=train_test_split(X,y,test_size=0.3,random_state=0)
 
 # ============= SALVANDO VARIÁVREIS EM DISCO =============
